@@ -1,0 +1,60 @@
+body {
+  background-color: rgb(255, 255, 255);
+  font-family: "Red Rose", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  margin: 0;
+}
+
+nav {
+  background-color: #37003c;
+  color: white;
+  height: 10vh;
+}
+
+h1 {
+  font-size: 7vh;
+  text-align: center;
+  margin: 0;
+  padding-top: 0.5vh;
+}
+
+#teams-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2vh;
+  max-width: 102vh;
+  margin-top: 2vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.team-card {
+  background-color: #bebebe;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 4px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.team-card:hover {
+  transform: scale(1.05);
+  background-color: #a9a9a9;
+}
+
+.team-card img {
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
+  display: block;
+  border-radius: 50%;
+  margin-top: 4vh;
+}
+
+#credits {
+  font-size: 2vh;
+  text-align: center;
+  margin-top: 2.2vh;
+  margin-bottom: 0;
+  color: #37003c;
+}
