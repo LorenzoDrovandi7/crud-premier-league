@@ -1,10 +1,15 @@
+const fs = require("fs");
 const express = require("express");
-const puerto = 8080;
+const multer = require("multer");
+
+const upload = multer({ dest: "uploads/" });
+const exphbs = require("express-handlebars");
+
+const puerto = 8080;´
 const app = express();
+const hbs = exphbs.create();
 
-app.get("/", (req, res) => {
-  res.end("Hola Mundo desde Express");
-});
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
 
-app.listen(puerto);
-console.log(`Servidor escuchando en el puerto ${puerto}`);
+app.use(express.static("{__dirname}/uploads"));
