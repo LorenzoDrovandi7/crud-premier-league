@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
-let teams = require("../data/teams");
+let teams = require("../data/teamsData");
 
-// CREATE
 router.post("/", (req, res) => {
   const { name } = req.body;
   const newTeam = { id: Date.now(), name };
@@ -10,12 +9,10 @@ router.post("/", (req, res) => {
   res.status(201).json(newTeam);
 });
 
-// READ
 router.get("/", (req, res) => {
   res.json(teams);
 });
 
-// UPDATE
 router.put("/:id", (req, res) => {
   const { id } = req.params;
   const { name } = req.body;
@@ -28,7 +25,6 @@ router.put("/:id", (req, res) => {
   }
 });
 
-// DELETE
 router.delete("/:id", (req, res) => {
   const { id } = req.params;
   teams = teams.filter((t) => t.id != id);
