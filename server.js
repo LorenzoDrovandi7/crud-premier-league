@@ -1,15 +1,17 @@
-const fs = require("fs");
 const express = require("express");
-const multer = require("multer");
-
-const upload = multer({ dest: "uploads/" });
-const exphbs = require("express-handlebars");
-
-const puerto = 8080;´
 const app = express();
-const hbs = exphbs.create();
+const PORT = 8080;
 
-app.engine("handlebars", hbs.engine);
-app.set("view engine", "handlebars");
+const teamsRoutes = require("./packages/backend/src/routes/teams");
 
-app.use(express.static("{__dirname}/uploads"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.get("/", (req, res) => {
+  res.sendFile("public/index.html", { root: __dirname });
+});
+
+app.use("/api/teams", teamsRoutes);
+
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+});

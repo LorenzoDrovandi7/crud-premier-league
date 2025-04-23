@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Equipos</title>
+  </head>
+  <body>
+    <h1>Equipos</h1>
+    <form id="team-form">
+      <input type="text" id="name" placeholder="Nombre del equipo" required />
+      <button type="submit">Agregar</button>
+    </form>
+    <ul id="team-list"></ul>
+
+    <script>
+      const form = document.getElementById("team-form");
+      const list = document.getElementById("team-list");
+
+      async function loadTeams() {
+        const res = await fetch("/api/teams");
+        const teams = await res.json();
+        list.innerHTML = teams
+          .map((t) => `<li>${t.name} <button onclick="deleteTeam(${t.id})">Eliminar</button></li>`)
+          .join("");
+      }
+
+      form.onsubmit = async (e) => {
+        e.preventDefault();
+        const name = document.getElementById("name").value;
+        await fetch("/api/teams", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name }),
+        });
+        form.reset();
+        loadTeams();
+      };
+
+      async function deleteTeam(id) {
+        await fetch(`/api/teams/${id}`, { method: "DELETE" });
+        loadTeams();
+      }
+
+      loadTeams();
+    </script>
+  </body>
+</html>
