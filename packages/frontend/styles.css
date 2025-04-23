@@ -34,12 +34,6 @@ h1 {
   width: 100%;
   aspect-ratio: 1;
   border-radius: 4px;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.team-card:hover {
-  transform: scale(1.05);
-  background-color: #a9a9a9;
 }
 
 .team-card img {
@@ -48,6 +42,78 @@ h1 {
   margin: 0 auto;
   display: block;
   margin-top: 4vh;
+}
+
+.team-card .team-logo {
+  width: 59%;
+  height: 59%;
+  margin: 0 auto;
+  display: block;
+  margin-top: 2vh;
+}
+
+.team-controllers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5vh;
+}
+
+.team-controllers .zoom-icon {
+  width: 3vh;
+  height: 3vh;
+  margin-left: 1vh;
+  margin-right: 1vh;
+  margin-top: 1vh;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.team-controllers .delete-icon,
+.edit-icon {
+  width: 3vh;
+  height: 3vh;
+  margin-left: 1vh;
+  margin-right: 1vh;
+  margin-top: 1vh;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.team-controllers .edit-icon {
+  width: 3vh;
+  height: 3vh;
+  margin-left: 1vh;
+  margin-right: 1vh;
+  margin-top: 1vh;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.zoom-icon:hover {
+  transform: scale(1.2);
+}
+
+.edit-icon:hover {
+  transform: scale(1.2);
+}
+
+.delete-icon:hover {
+  transform: scale(1.2);
+}
+
+.add-icon {
+  width: 3vh;
+  height: 3vh;
+  margin-left: 1vh;
+  margin-right: 1vh;
+  margin-top: 1vh;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.add-icon:hover {
+  transform: scale(1.2);
 }
 
 #credits {

@@ -26,9 +26,14 @@ router.put("/:id", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  const { id } = req.params;
-  teams = teams.filter((t) => t.id != id);
-  res.json({ message: "Team deleted" });
+  const id = parseInt(req.params.id);
+  const index = teams.findIndex((t) => t.id === id);
+  if (index !== -1) {
+    teams.splice(index, 1);
+    res.status(204).send(); // No Content
+  } else {
+    res.status(404).json({ error: "Equipo no encontrado" });
+  }
 });
 
 module.exports = router;
