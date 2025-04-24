@@ -8,9 +8,10 @@ async function loadTeams() {
   const teams = await res.json();
   for (let i = 0; i < teamsDivs.length; i++) {
     if (i < teams.length) {
+      const logoUrl = teams[i].crestUrl || "images/plus.png";
       teamsDivs[i].innerHTML = `
-        <img src="${teams[i].crestUrl}" alt="${teams[i].name}" class="team-logo"/>
-        <div class="team-controllers">
+        <img src="${logoUrl}" alt="${teams[i].name}" class="team-logo"/>
+          <div class="team-controllers">
           <img src="images/zoom.png" class="zoom-icon" data-team-zoom-id="${teams[i].id}"/>
           <img src="images/edit.png" class="edit-icon" data-team-edit-id="${teams[i].id}"/>
           <img src="images/delete.png" class="delete-icon" data-team-delete-id="${teams[i].id}"/>
@@ -46,5 +47,11 @@ document.addEventListener("click", async (e) => {
       console.error("Error eliminando el equipo:", error);
       alert("Ocurrió un error");
     }
+  }
+});
+
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("add-icon")) {
+    window.location.href = "/add.html";
   }
 });

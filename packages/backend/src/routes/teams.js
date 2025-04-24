@@ -3,8 +3,18 @@ const router = express.Router();
 let teams = require("../data/teamsData");
 
 router.post("/", (req, res) => {
-  const { name } = req.body;
-  const newTeam = { id: Date.now(), name };
+  const { name, crestUrl } = req.body;
+
+  if (!name || !crestUrl) {
+    return res.status(400).json({ error: "Faltan campos requeridos" });
+  }
+
+  const newTeam = {
+    id: Date.now(),
+    name,
+    crestUrl,
+  };
+
   teams.push(newTeam);
   res.status(201).json(newTeam);
 });
@@ -15,10 +25,12 @@ router.get("/", (req, res) => {
 
 router.put("/:id", (req, res) => {
   const { id } = req.params;
-  const { name } = req.body;
+  const { name, crestUrl } = req.body;
+
   const team = teams.find((t) => t.id == id);
   if (team) {
-    team.name = name;
+    if (name) team.name = name;
+    if (crestUrl) team.crestUrl = crestUrl;
     res.json(team);
   } else {
     res.status(404).json({ error: "Team not found" });
@@ -28,9 +40,10 @@ router.put("/:id", (req, res) => {
 router.delete("/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const index = teams.findIndex((t) => t.id === id);
+
   if (index !== -1) {
     teams.splice(index, 1);
-    res.status(204).send(); // No Content
+    res.status(204).send();
   } else {
     res.status(404).json({ error: "Equipo no encontrado" });
   }

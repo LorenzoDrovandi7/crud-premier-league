@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PL Team Viewer</title>
+    <link rel="stylesheet" href="addStyles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@300..700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <nav id="navbar">
+      <h1 id="title">Add Team</h1>
+    </nav>
+    <section id="add-team-section">
+      <form id="add-team-form">
+        <div class="form-group-1">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" placeholder="Arsenal FC" required />
+
+          <label for="shortName">Short Name:</label>
+          <input type="text" id="shortName" name="shortName" placeholder="Arsenal" required />
+
+          <label for="tla">TLA:</label>
+          <input type="text" id="tla" name="tla" placeholder="ARS" required />
+
+          <label for="crestUrl">Image URL:</label>
+          <input
+            type="text"
+            id="crestUrl"
+            name="crestUrl"
+            placeholder="https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg"
+            required />
+          <label for="address">Address:</label>
+          <input type="text" id="address" name="address" placeholder="75 Drayton Park London N5 1BU" required />
+          <label for="phone">Phone:</label>
+          <input type="text" id="phone" name="phone" placeholder="+44 (020) 76195003" required />
+        </div>
+
+        <div class="form-group-2">
+          <label for="website">Website:</label>
+          <input type="text" id="website" name="website" placeholder="http://www.arsenal.com" required />
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="info@arsenal.co.uk" required />
+
+          <label for="founded">Founded:</label>
+          <input type="number" id="founded" name="founded" placeholder="1886" required />
+
+          <label for="clubColors">Club Colors:</label>
+          <input type="text" id="clubColors" name="clubColors" placeholder="Red / White" required />
+
+          <label for="venue">Stadium:</label>
+          <input type="text" id="venue" name="venue" placeholder="Emirates Stadium" required />
+          <button type="submit">Add Team</button>
+        </div>
+      </form>
+    </section>
+    <img src="images/exit.png" alt="exit" id="exit" />
+    <footer>
+      <p id="credits">Created by Lorenzo Drovandi</p>
+    </footer>
+    <script src="src/add.js"></script>
+  </body>
+</html>
