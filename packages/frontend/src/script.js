@@ -62,3 +62,10 @@ document.addEventListener("click", (e) => {
     window.location.href = `/edit.html?id=${teamId}`;
   }
 });
+
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("zoom-icon")) {
+    const teamId = e.target.dataset.teamZoomId;
+    window.location.href = `/zoom.html?id=${teamId}`;
+  }
+});
