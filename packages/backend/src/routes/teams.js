@@ -49,4 +49,15 @@ router.delete("/:id", (req, res) => {
   }
 });
 
+router.get("/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  const team = teams.find((t) => t.id === id);
+
+  if (team) {
+    res.json(team);
+  } else {
+    res.status(404).json({ error: "Equipo no encontrado" });
+  }
+});
+
 module.exports = router;

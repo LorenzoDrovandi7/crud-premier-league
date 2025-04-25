@@ -55,3 +55,10 @@ document.addEventListener("click", (e) => {
     window.location.href = "/add.html";
   }
 });
+
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("edit-icon")) {
+    const teamId = e.target.dataset.teamEditId;
+    window.location.href = `/edit.html?id=${teamId}`;
+  }
+});

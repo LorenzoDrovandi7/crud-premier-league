@@ -22,3 +22,9 @@ document.getElementById("add-team-form").addEventListener("submit", async (e) =>
     alert("Ocurrió un error al enviar los datos");
   }
 });
+
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("exit-icon")) {
+    window.location.href = "/";
+  }
+});
