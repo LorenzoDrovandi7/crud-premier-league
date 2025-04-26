@@ -12,14 +12,14 @@ document.getElementById("add-team-form").addEventListener("submit", async (e) =>
     });
 
     if (res.ok) {
-      alert("Equipo agregado con éxito");
+      alert("Team added successfully");
       window.location.href = "/";
     } else {
-      alert("Error al agregar equipo");
+      alert("Error adding team");
     }
   } catch (error) {
     console.error("Error:", error);
-    alert("Ocurrió un error al enviar los datos");
+    alert("An error occurred while sending the data");
   }
 });
 

@@ -3,16 +3,25 @@ const router = express.Router();
 let teams = require("../data/teamsData");
 
 router.post("/", (req, res) => {
-  const { name, crestUrl } = req.body;
+  const { name, shortName, tla, crestUrl, address, phone, website, email, founded, clubColors, venue } = req.body;
 
   if (!name || !crestUrl) {
-    return res.status(400).json({ error: "Faltan campos requeridos" });
+    return res.status(400).json({ error: "Required fields are missing" });
   }
 
   const newTeam = {
     id: Date.now(),
     name,
+    shortName: shortName || "",
+    tla: tla || "",
     crestUrl,
+    address: address || "",
+    phone: phone || "",
+    website: website || "",
+    email: email || "",
+    founded: founded || "",
+    clubColors: clubColors || "",
+    venue: venue || "",
   };
 
   teams.push(newTeam);
@@ -45,7 +54,7 @@ router.delete("/:id", (req, res) => {
     teams.splice(index, 1);
     res.status(204).send();
   } else {
-    res.status(404).json({ error: "Equipo no encontrado" });
+    res.status(404).json({ error: "Team not found." });
   }
 });
 
@@ -56,7 +65,7 @@ router.get("/:id", (req, res) => {
   if (team) {
     res.json(team);
   } else {
-    res.status(404).json({ error: "Equipo no encontrado" });
+    res.status(404).json({ error: "Team not found" });
   }
 });
 

@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const teamId = urlParams.get("id");
 
   if (!teamId) {
-    alert("No se encontró el ID del equipo.");
+    alert("Team ID not found.");
     return;
   }
 
@@ -25,11 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const res = await fetch(`/api/teams/${teamId}`);
       if (!res.ok) {
-        throw new Error("No se pudo cargar los datos del equipo.");
+        throw new Error("Could not load team data.");
       }
       const team = await res.json();
 
-      // Asignamos los datos al DOM
       teamDataElements.name.textContent = team.name;
       teamDataElements.shortName.textContent = team.shortName;
       teamDataElements.tla.textContent = team.tla;
@@ -42,8 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
       teamDataElements.venue.textContent = team.venue;
       teamDataElements.logo.src = team.crestUrl; // Asignamos el logo
     } catch (error) {
-      console.error("Error al cargar los datos del equipo:", error);
-      alert("No se pudo cargar los datos del equipo.");
+      console.error("Error loading team data:", error);
+      alert("Error loading team data");
     }
   }
 

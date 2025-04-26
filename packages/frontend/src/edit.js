@@ -2,8 +2,8 @@ const urlParams = new URLSearchParams(window.location.search);
 const teamId = urlParams.get("id");
 
 if (!teamId) {
-  alert("ID de equipo no especificado");
-  throw new Error("ID de equipo no encontrado en la URL");
+  alert("Team ID not specified");
+  throw new Error("Team ID not found");
 }
 
 const form = document.getElementById("add-team-form");
@@ -11,7 +11,7 @@ const form = document.getElementById("add-team-form");
 async function loadTeamData() {
   try {
     const res = await fetch(`/api/teams/${teamId}`);
-    if (!res.ok) throw new Error("No se encontró el equipo");
+    if (!res.ok) throw new Error("Team not found");
 
     const team = await res.json();
 
@@ -21,8 +21,8 @@ async function loadTeamData() {
       }
     }
   } catch (err) {
-    console.error("Error al cargar datos del equipo:", err);
-    alert("No se pudo cargar el equipo.");
+    console.error("Error loading team data:", err);
+    alert("Error loading team data.");
   }
 }
 
@@ -40,14 +40,14 @@ form.addEventListener("submit", async (e) => {
     });
 
     if (res.ok) {
-      alert("Equipo actualizado con éxito");
+      alert("Team successfully updated");
       window.location.href = "/";
     } else {
-      alert("Error al actualizar el equipo");
+      alert("Error updating the team");
     }
   } catch (err) {
     console.error("Error:", err);
-    alert("Ocurrió un error");
+    alert("An error occurred while updating the team.");
   }
 });
 

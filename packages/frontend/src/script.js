@@ -29,7 +29,7 @@ document.addEventListener("click", async (e) => {
   if (e.target.classList.contains("delete-icon")) {
     const teamId = e.target.dataset.teamDeleteId;
 
-    const confirmed = confirm("¿Seguro que querés eliminar este equipo?");
+    const confirmed = confirm("Are you sure you want to delete this team?");
     if (!confirmed) return;
 
     try {
@@ -38,14 +38,14 @@ document.addEventListener("click", async (e) => {
       });
 
       if (res.ok) {
-        alert("Equipo eliminado con éxito");
+        alert("Team successfully eliminated");
         loadTeams();
       } else {
-        alert("Error al eliminar el equipo");
+        alert("Error deleting the team");
       }
     } catch (error) {
-      console.error("Error eliminando el equipo:", error);
-      alert("Ocurrió un error");
+      console.error("Error deleting equipment:", error);
+      alert("An error occurred");
     }
   }
 });
